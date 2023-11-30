@@ -1,66 +1,39 @@
-## Foundry
+# Provably Random Raffle Contracts
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## About
 
-Foundry consists of:
+Welcome to the world of decentralized lotteries powered by smart contracts! This repository contains the code for creating a provably random smart contract lottery system.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### Features
 
-## Documentation
+1. **Ticket Entry System:**
+   - Users can participate by purchasing tickets.
+   - Ticket fees contribute to the jackpot for the lucky winner during the draw.
 
-https://book.getfoundry.sh/
+2. **Automated Draw:**
+   - After a specified period (X), the lottery will autonomously conduct a draw.
+   - The draw process is handled programmatically for transparency and fairness.
 
-## Usage
+3. **Chainlink Integration:**
+   - Leveraging Chainlink VRF for Randomness:
+     - Ensures a tamper-proof and verifiable random selection of the winner.
+   - Chainlink Automation for Time-Based Trigger:
+     - Effortlessly manages time-based events, ensuring a seamless and secure draw process.
 
-### Build
+### How It Works
 
-```shell
-$ forge build
-```
+1. **Ticket Purchase:**
+   - Users initiate participation by paying for tickets, contributing to the prize pool.
 
-### Test
+2. **Draw Mechanism:**
+   - The lottery autonomously selects a winner after the predefined time period.
+   - Chainlink VRF guarantees randomness in the selection process.
 
-```shell
-$ forge test
-```
+3. **Chainlink Integration:**
+   - Utilizing Chainlink VRF for secure and unbiased random number generation.
+   - Chainlink Automation manages the timing aspect, ensuring the draw occurs as scheduled.
 
-### Format
+Feel free to explore the code and adapt it to your needs. Happy coding, and may the odds be ever in your favor!
 
-```shell
-$ forge fmt
-```
+**Note:** Ensure you have the necessary dependencies, including Chainlink VRF and Chainlink Automation, set up before deploying the smart contract.
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
