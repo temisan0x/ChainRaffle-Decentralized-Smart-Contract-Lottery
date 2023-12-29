@@ -30,7 +30,6 @@
 
 //     Functions
 
-
 // Order of Functions
 //     constructor
 
@@ -45,8 +44,6 @@
 //     internal
 
 //     private
-
-
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
@@ -65,31 +62,25 @@ contract Raffle {
     address payable[] private s_players;
 
     /**Events */
-    event EnteredRaffle(address indexed players);
+    event EnteredRaffle(address indexed player);
 
     constructor(uint256 entranceFee) {
         i_entranceFee = entranceFee;
+    } 
+
+    function enterRaffle() external payable{
+        if(msg.value != i_entranceFee) {
+            revert Raffle__NotEnoughEthSent();
+        }
+
+        s_players.push(payable(msg.sender));
+        emit EnteredRaffle(msg.sender);
     }
 
-    function enterRaffle() external payable {
-       // require(msg.value >=  i_entranceFee, "Not enough ETH sent!");
-       if(msg.value < i_entranceFee){
-        revert Raffle__NotEnoughEthSent();
-       }
-       s_players.push(payable(msg.sender));
-       emit EnteredRaffle(msg.sender);
-    }
- 
-    function pickWinner() public {}
-
-    /**Getter function */
-    function getEntranceFee() external view returns(uint256) {
-        return i_entranceFee;
-    }
+    
+   
 }
-
-/**
- * @notice
+/* @notice
  * Constructor sets the entrance fee when the contract is deployed
  * The getter function `getEntranceFee` provides transparency, allowing external parties
  * to inspect the current state of the contract by retrieving the entrance fee value.
